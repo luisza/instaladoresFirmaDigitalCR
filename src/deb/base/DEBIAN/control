@@ -1,0 +1,14 @@
+Package: firmadigitalcr
+Source: firmadigitalcr
+Version: 0.2-3
+Architecture: ARCH
+Maintainer: Luis Zarate <luis.zarate@solvosoft.com>
+Depends: DEPS
+Section: libs
+Priority: optional
+Homepage: https://github.com/luisza/instaladoresFirmaDigitalCR
+Description: Libs y certs de firma digital de Costa Rica
+ Instala y configura los certificados digitales provistos por el Banco Central
+ de Costa Rica y las bibliotecas para el correcto funcionamiento del dispositivo
+ criptográfico
+
