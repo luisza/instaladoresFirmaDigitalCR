@@ -1,0 +1,10 @@
+[Unit]
+Description=Mantenimiento de enlaces a p11-kit-proxy
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/update-p11-kit-symlinks
+
+[Install]
+WantedBy=multi-user.target
+

@@ -9,7 +9,7 @@
 # Si se desea instalar antes las dependencias hacer 
 # sudo bash pkg_search.sh -i 
 
-DEPS=(pcscd libpcsc-perl libasedrive-usb pcsc-tools libacsccid1 libccid libacr38u)
+DEPS=(pcscd libpcsc-perl libasedrive-usb pcsc-tools libacsccid1 libccid libacr38u icedtea-plugin libnss3 p11-kit-modules)
 
 function install_deps {
     for i in ${DEPS[@]}; do
@@ -19,10 +19,14 @@ function install_deps {
 
 function search_pkg {
     for i in ${DEPS[@]}; do
-        if [ ${DEPS[${#DEPS[@]}-1]} == $i ]; then # check the last and remove comma
-            dpkg-query -l | grep $i | awk '{printf "%s (>= %s)", $2, $3}'
-        else
-            dpkg-query -l | grep $i | awk '{printf "%s (>= %s), ", $2, $3}'
+
+        RS=`dpkg-query -l | grep $i | awk '{printf "%s (>= %s)", $2, $3}'`
+        if [ -n "$RS" ]; then 
+            if [ ${DEPS[0]} == $i ]; then # check the last and remove comma
+                printf $RS
+            else
+                printf ", $RS"
+            fi 
         fi
     done
 }

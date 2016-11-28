@@ -42,7 +42,9 @@ CODE_PREFIX="../.."
 WORKDIR=$DIR_PREFIX/$CODEBASE/$ARCH/$NAME-$VERSION
 OLDPATH=`pwd`
 
-
+if [ -d "$WORKDIR" ]; then
+    rm -rf $WORKDIR
+fi
 mkdir -p $WORKDIR
 mkdir -p $WORKDIR/$PREFIX/share/$NAME/
 mkdir -p $WORKDIR/$PREFIX/lib
@@ -55,7 +57,7 @@ else
 fi
 
 
-cp -a base/DEBIAN $WORKDIR
+cp -a base/* $WORKDIR
 sed -i "s/ARCH/$DARCH/g" $WORKDIR/DEBIAN/control
 
 bash $OLDPATH/pkg_search.sh -i

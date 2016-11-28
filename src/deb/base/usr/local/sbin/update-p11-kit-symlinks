@@ -1,0 +1,19 @@
+#!/bin/sh
+
+FIREFOX_LIB=/usr/lib/firefox/libnssckbi.so
+THUNDERBIRD_LIB=/usr/lib/thunderbird/libnssckbi.so
+
+if ! [ -L "$FIREFOX_LIB" ]
+then
+    echo "Firefox libnssckbi.so is not a symlink. Fixing..."
+    mv -f "$FIREFOX_LIB" "$FIREFOX_LIB".bak
+    ln -s /usr/lib/x86_64-linux-gnu/p11-kit-proxy.so "$FIREFOX_LIB"
+fi
+
+if ! [ -L "$THUNDERBIRD_LIB" ]
+then
+    echo "Thunderbird libnssckbi.so is not a symlink. Fixing..."
+    mv -f "$THUNDERBIRD_LIB" "$THUNDERBIRD_LIB".bak
+    ln -s /usr/lib/x86_64-linux-gnu/p11-kit-proxy.so "$THUNDERBIRD_LIB"
+fi
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<IDProtect>
+ <TokenLibs>
+  <IDProtect>
+   <Cards>
+    <IDProtectXF>
+     <ATR type='hexBinary'>3BDC00FF8091FE1FC38073C821106600000000000000</ATR>
+     <ATRMask type='hexBinary'>FFFF00FFF0FFFFFFFFFFFFFFFFF0FF00000000000000</ATRMask>
+    </IDProtectXF>
+   </Cards>
+  </IDProtect>
+ </TokenLibs>
+</IDProtect>
+
