@@ -20,10 +20,11 @@ function install_deps {
 function search_pkg {
     for i in ${DEPS[@]}; do
 
-        RS=`dpkg-query -l | grep $i | awk '{printf "%s (>= %s)", $2, $3}'`
+        RS=`dpkg-query -l | grep $i | awk '{printf "%s (>=%s), ", $2, $3}'`
         if [ -n "$RS" ]; then 
+            RS=${RS: : -2}
             if [ ${DEPS[0]} == $i ]; then # check the last and remove comma
-                printf $RS
+                printf "$RS"
             else
                 printf ", $RS"
             fi 

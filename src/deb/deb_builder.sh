@@ -46,17 +46,17 @@ if [ -d "$WORKDIR" ]; then
     rm -rf $WORKDIR
 fi
 mkdir -p $WORKDIR
-mkdir -p $WORKDIR/$PREFIX/share/$NAME/
+mkdir -p $WORKDIR/$PREFIX/local/share/ca-certificates/Costa_Rica
 mkdir -p $WORKDIR/$PREFIX/lib
 mkdir -p $WORKDIR/$PREFIX/bin
 
-if [ $ARCH == 'x86_64' ]; then
+if [ $ARCH == 'x86_64' -o  $ARCH == 'amd64' ]; then
     DARCH="amd64"
 else
     DARCH="i386"
 fi
 
-
+echo "deb_builder building on $WORKDIR"
 cp -a base/* $WORKDIR
 sed -i "s/ARCH/$DARCH/g" $WORKDIR/DEBIAN/control
 
@@ -65,13 +65,13 @@ DEPS=$(bash $OLDPATH/pkg_search.sh)
 sed -i "s/DEPS/$DEPS/g" $WORKDIR/DEBIAN/control
 sed -i "s/NAME/$NAME/g" $WORKDIR/DEBIAN/postinst
 
-cp $CODE_PREFIX/certs/* $WORKDIR/$PREFIX/share/$NAME/
+cp $CODE_PREFIX/certs/* $WORKDIR/$PREFIX/local/share/ca-certificates/Costa_Rica
 cp $CODE_PREFIX/lib/$ARCH/* $WORKDIR/$PREFIX/lib/
 #cp $CODE_PREFIX/bin/* $WORKDIR/$PREFIX/bin/
 
 cd $WORKDIR
-for u in usr/share/$NAME/*; do  md5sum "$u" >> DEBIAN/md5sums; done
-for u in usr/lib/*; do  md5sum "$u" >> DEBIAN/md5sums; done
+for u in usr/local/share/ca-certificates/Costa_Rica/*; do  md5sum "$u" >> DEBIAN/md5sums; done
+for u in lib/systemd/system/*; do  md5sum "$u" >> DEBIAN/md5sums; done
 #for u in usr/bin/*; do  md5sum "$u"; done
 
 cd $OLDPATH

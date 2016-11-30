@@ -2,12 +2,10 @@
 set -e
 # Automatically added by dh_installudev
 if [ "$1" = configure ]; then
-	for u in /usr/share/NAME/*.crt; do 
-        ln -s /usr/share/NAME/$u /usr/local/share/ca-certificates/$u 
-    done
     update-ca-certificates --fresh
     chmod +x /usr/local/sbin/update-p11-kit-symlinks
-    systemctl enable p11-kit-proxy-updater.service
-    systemctl start p11-kit-proxy-updater.service
+    ln -s /lib/systemd/system/p11-kit-proxy-updater.service /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service
+
+
 fi
 # End automatically added section
