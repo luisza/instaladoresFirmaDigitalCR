@@ -7,6 +7,7 @@ ARCHS=(amd64 i386)
 BUILD_PREFIX=`pwd`
 NAME="firmadigitalcr"
 VERSION="1.0"
+GPGKEY="391090B9"
 
 
 while getopts ":ud" optname
@@ -47,7 +48,8 @@ for ((i=0; i<${#SUPPORTED_VERSION[*]}; i++)); do
 
     for arch in ${ARCHS[@]}; do
         jaildir=$BUILD_PREFIX/$OS/$version/$arch
-        dpkg-sig --sign builder $jaildir/$FILENAME
+        # not needed reprepro do it.        
+        #dpkg-sig --sign builder $jaildir/$FILENAME
         cd $PREFIX/$OS/
         echo "reprepro includedeb $codename $jaildir/$FILENAME"
         reprepro includedeb $codename $jaildir/$FILENAME
@@ -55,3 +57,4 @@ for ((i=0; i<${#SUPPORTED_VERSION[*]}; i++)); do
     done
 done
 
+gpg --armor --output $PREFIX/firmadigitalcr.gpg.key --export $GPGKEY

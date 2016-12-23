@@ -4,7 +4,7 @@ Codename: CODENAME
 Architectures: i386 amd64
 Components: main
 Description: Instaladores de firma digital de Costa Rica
-SignWith: yes
+SignWith: 391090B9
 DebOverride: override.VERSION
 DscOverride: override.VERSION
 
