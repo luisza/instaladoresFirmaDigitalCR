@@ -1,0 +1,11 @@
+Origin: solvosoft.com
+Label: solvosoft.com
+Codename: CODENAME
+Architectures: i386 amd64
+Components: main
+Description: Instaladores de firma digital de Costa Rica
+SignWith: yes
+DebOverride: override.VERSION
+DscOverride: override.VERSION
+
+

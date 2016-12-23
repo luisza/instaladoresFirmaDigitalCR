@@ -9,7 +9,7 @@
 # Si se desea instalar antes las dependencias hacer 
 # sudo bash pkg_search.sh -i 
 
-DEPS=(pcscd libpcsc-perl libasedrive-usb pcsc-tools libacsccid1 libccid libacr38u icedtea-plugin libnss3 p11-kit-modules)
+DEPS=(pcscd libpcsc-perl libasedrive-usb pcsc-tools libacsccid1 libccid libacr38u icedtea-plugin libnss3 libnss3-tools  p11-kit-modules)
 
 function install_deps {
     for i in ${DEPS[@]}; do

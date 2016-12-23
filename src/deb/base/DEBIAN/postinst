@@ -2,10 +2,17 @@
 set -e
 # Automatically added by dh_installudev
 if [ "$1" = configure ]; then
+    mkdir -p /usr/local/share/ca-certificates/Costa_Rica/
+    cp -a CERTPATH/* /usr/local/share/ca-certificates/Costa_Rica/
     update-ca-certificates --fresh
-    chmod +x /usr/local/sbin/update-p11-kit-symlinks
-    ln -s /lib/systemd/system/p11-kit-proxy-updater.service /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service
+    ln -sf /lib/systemd/system/p11-kit-proxy-updater.service /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service
+    mkdir -p /usr/lib/pkcs11/
+    ln -sf /usr/lib/libASEP11.so /usr/lib/pkcs11/libASEP11.so
+    ARCH=`uname -m`
+    mkdir -p /usr/lib/$ARCH-linux-gnu/pkcs11/
+    ln -sf /usr/lib/libASEP11.so /usr/lib/$ARCH-linux-gnu/pkcs11/
 
+    bash /usr/share/firmadigitalcr/bin/update-p11-kit-symlinks
 
 fi
 # End automatically added section

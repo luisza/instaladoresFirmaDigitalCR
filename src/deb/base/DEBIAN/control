@@ -1,6 +1,6 @@
 Package: firmadigitalcr
 Source: firmadigitalcr
-Version: 0.2-3
+Version: VERSION
 Architecture: ARCH
 Maintainer: Luis Zarate <luis.zarate@solvosoft.com>
 Depends: DEPS

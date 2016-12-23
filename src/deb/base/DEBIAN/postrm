@@ -1,9 +1,30 @@
 #!/bin/sh
 set -e
-# Automatically added by dh_installudev
 
+rm -rf /usr/local/share/ca-certificates/Costa_Rica/  2>/dev/null || true
 update-ca-certificates --fresh
-rm /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service
+rm /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service  2>/dev/null || true
+rm /usr/lib/pkcs11/libASEP11.so  2>/dev/null || true
+rmdir /usr/lib/pkcs11/ 2>/dev/null || true
+
+ARCH=`uname -m`
+rm /usr/lib/$ARCH-linux-gnu/pkcs11/libASEP11.so 2>/dev/null || true
+rmdir /usr/lib/$ARCH-linux-gnu/pkcs11/ 2>/dev/null || true
+
+
+PROGRAMS="firefox iceweasel thunderbird icedove"
+
+for f in $PROGRAMS; do
+    for path in `ls /usr/lib/ | grep $f`; do
+        if [ -e /usr/lib/$path/libnssckbi.so.bk ]; then
+            if [ -L /usr/lib/$path/libnssckbi.so ]; then
+                rm /usr/lib/$path/libnssckbi.so
+                mv /usr/lib/$path/libnssckbi.so.bk /usr/lib/$path/libnssckbi.so
+            fi
+        fi
+    done 
+done
+
 
 
 # End automatically added section

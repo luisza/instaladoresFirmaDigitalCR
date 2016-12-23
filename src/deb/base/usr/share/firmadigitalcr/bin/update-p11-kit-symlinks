@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+PROGRAMS=(firefox iceweasel thunderbird icedove)
+ARCH=`uname -m`
+
+for f in ${PROGRAMS[@]}; do
+    for path in `ls /usr/lib/ | grep $f`; do
+        if [ -e /usr/lib/$path/libnssckbi.so ]; then
+            if ! [ -L /usr/lib/$path/libnssckbi.so ]; then
+                mv /usr/lib/$path/libnssckbi.so /usr/lib/$path/libnssckbi.so.bk
+                ln -sf /usr/lib/$ARCH-linux-gnu/p11-kit-proxy.so /usr/lib/$path/libnssckbi.so
+            fi
+        fi
+    done 
+done
