@@ -11,6 +11,12 @@ ARCH=`uname -m`
 rm /usr/lib/$ARCH-linux-gnu/pkcs11/libASEP11.so 2>/dev/null || true
 rmdir /usr/lib/$ARCH-linux-gnu/pkcs11/ 2>/dev/null || true
 
+if [ "$ARCH" = "x86_64" ]; then
+    DARCH="x64"
+fi
+ 
+rm /usr/lib/$DARCH-athena/libASEP11.so 2>/dev/null || true
+rmdir /usr/lib/$DARCH-athena/ 2>/dev/null || true
 
 PROGRAMS="firefox iceweasel thunderbird icedove"
 
@@ -26,5 +32,8 @@ for f in $PROGRAMS; do
 done
 
 
+[ -L /etc/Athena/IDPClientDB.xml ] && rm /etc/Athena/IDPClientDB.xml
+dpkg-divert --remove --package firmadigitalcr --rename \
+        --divert /etc/Athena/IDPClientDB.xml.distrib /etc/Athena/IDPClientDB.xml
 
 # End automatically added section

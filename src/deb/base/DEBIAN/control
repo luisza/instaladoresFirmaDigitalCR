@@ -3,7 +3,7 @@ Source: firmadigitalcr
 Version: VERSION
 Architecture: ARCH
 Maintainer: Luis Zarate <luis.zarate@solvosoft.com>
-Depends: DEPS
+Depends: DEPS, libc6
 Section: libs
 Priority: optional
 Homepage: https://github.com/luisza/instaladoresFirmaDigitalCR

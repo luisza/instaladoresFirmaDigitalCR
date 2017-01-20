@@ -9,10 +9,20 @@ if [ "$1" = configure ]; then
     mkdir -p /usr/lib/pkcs11/
     ln -sf /usr/lib/libASEP11.so /usr/lib/pkcs11/libASEP11.so
     ARCH=`uname -m`
+    DARCH="x86"
+    if [ "$ARCH" = "x86_64" ]; then
+        DARCH="x64"
+    fi
+
+    mkdir -p /usr/lib/$DARCH-athena/
     mkdir -p /usr/lib/$ARCH-linux-gnu/pkcs11/
     ln -sf /usr/lib/libASEP11.so /usr/lib/$ARCH-linux-gnu/pkcs11/
-
+    ln -sf /usr/lib/libASEP11.so /usr/lib/$DARCH-athena/
     bash /usr/share/firmadigitalcr/bin/update-p11-kit-symlinks
+
+    dpkg-divert --add --package firmadigitalcr --rename \
+                        --divert /etc/Athena/IDPClientDB.xml.distrib /etc/Athena/IDPClientDB.xml
+    [ \! -e /etc/Athena/IDPClientDB.xml -o -L /etc/Athena/IDPClientDB.xml ] && ln -sf /etc/Athena/IDPClientDB.xml.distrib /etc/Athena/IDPClientDB.xml
 
 fi
 # End automatically added section

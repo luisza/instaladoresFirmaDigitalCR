@@ -4,7 +4,7 @@ DIR_PREFIX="debian"
 CODEBASE=`lsb_release -cs`
 ARCH=`uname -m`
 NAME="firmadigitalcr"
-VERSION="1.0"
+VERSION="1.1"
 
 
 while getopts ":n:ub:a:d:v:" optname
@@ -87,7 +87,7 @@ cp $CODE_PREFIX/certs/* $WORKDIR/$PREFIX/share/$NAME/ca-certificates/Costa_Rica
 cp $CODE_PREFIX/lib/$ARCH/* $WORKDIR/$PREFIX/lib/
 cp $WORKDIR/DEBIAN/copyright  $WORKDIR/$PREFIX/share/doc/$NAME/
 
-gzip -9 -c $WORKDIR/DEBIAN/changelog > $WORKDIR/$PREFIX/share/doc/$NAME/changelog.Debian.gz
+gzip -9 -c $WORKDIR/DEBIAN/changelog > $WORKDIR/$PREFIX/share/doc/$NAME/changelog.gz
 
 rm $WORKDIR/DEBIAN/changelog
 rm $WORKDIR/DEBIAN/copyright
