@@ -60,7 +60,13 @@ else
 fi
 
 echo "deb_builder building on $WORKDIR"
+mkdir -p $WORKDIR/lib/
 cp -a base/* $WORKDIR
+cp -a $CODE_PREFIX/etc  $WORKDIR
+cp -a $CODE_PREFIX/lib/systemd $WORKDIR/lib/
+cp -a $CODE_PREFIX/usr/ $WORKDIR
+
+
 sed -i "s/ARCH/$DARCH/g" $WORKDIR/DEBIAN/control
 sed -i "s/VERSION/$VERSION/g" $WORKDIR/DEBIAN/control
 
