@@ -17,6 +17,7 @@ fi
  
 rm /usr/lib/$DARCH-athena/libASEP11.so 2>/dev/null || true
 rmdir /usr/lib/$DARCH-athena/ 2>/dev/null || true
+rm -rf /Firma_Digital/
 
 PROGRAMS="firefox iceweasel thunderbird icedove"
 

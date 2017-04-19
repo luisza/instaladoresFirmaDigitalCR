@@ -16,3 +16,10 @@ Makefile.in
 /install-sh
 /missing
 /stamp-h1
+
+src/deb/debian/
+src/deb/jail/
+src/deb/jail_bk/
+src/deb/repo/
+src/deb/ubuntu/
+

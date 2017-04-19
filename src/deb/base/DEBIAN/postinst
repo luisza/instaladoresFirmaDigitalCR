@@ -16,8 +16,15 @@ if [ "$1" = configure ]; then
 
     mkdir -p /usr/lib/$DARCH-athena/
     mkdir -p /usr/lib/$ARCH-linux-gnu/pkcs11/
+    mkdir -p /Firma_Digital/LIBRERIAS/
+
     ln -sf /usr/lib/libASEP11.so /usr/lib/$ARCH-linux-gnu/pkcs11/
     ln -sf /usr/lib/libASEP11.so /usr/lib/$DARCH-athena/
+    ln -sf /usr/lib/libASEP11.so /Firma_Digital/LIBRERIAS/
+    ln -sf /usr/local/share/ca-certificates/Costa_Rica/ /Firma_Digital/CERTIFICADOS/
+
+    
+
     bash /usr/share/firmadigitalcr/bin/update-p11-kit-symlinks
 
     dpkg-divert --add --package firmadigitalcr --rename \
