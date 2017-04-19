@@ -4,7 +4,7 @@ DIR_PREFIX="debian"
 CODEBASE=`lsb_release -cs`
 ARCH=`uname -m`
 NAME="firmadigitalcr"
-VERSION="1.1"
+VERSION="1.2"
 
 
 while getopts ":n:ub:a:d:v:" optname

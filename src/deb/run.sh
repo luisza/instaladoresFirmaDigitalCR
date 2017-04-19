@@ -3,8 +3,9 @@
 sudo rm -rf debian/
 sudo rm -rf ubuntu/
 
-sudo bash run_in_jail.sh -d 
-sudo bash run_in_jail.sh -u
+# remove n if update jail is needed
+sudo bash run_in_jail.sh -dn
+sudo bash run_in_jail.sh -un
 
 rm -rf repo/
 

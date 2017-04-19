@@ -2,7 +2,7 @@
 
 OLDPATH=`pwd`
 PREFIX="jail"
-ARCHS=(amd64)
+ARCHS=(amd64 i386)
 UPDATE='-u'
 while getopts ":udn" optname
   do
@@ -13,11 +13,10 @@ while getopts ":udn" optname
         ;;
       "d")
         OS='debian'
-        SUPPORTED_VERSION=(stable )
+        SUPPORTED_VERSION=(stable testing sid )
         ;;
       "n")
         UPDATE=''
-        
         ;;
 
       *)

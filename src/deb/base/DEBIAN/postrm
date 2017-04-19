@@ -32,9 +32,4 @@ for f in $PROGRAMS; do
     done 
 done
 
-
-[ -L /etc/Athena/IDPClientDB.xml ] && rm /etc/Athena/IDPClientDB.xml
-dpkg-divert --remove --package firmadigitalcr --rename \
-        --divert /etc/Athena/IDPClientDB.xml.distrib /etc/Athena/IDPClientDB.xml
-
 # End automatically added section

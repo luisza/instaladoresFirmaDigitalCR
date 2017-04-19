@@ -21,15 +21,11 @@ if [ "$1" = configure ]; then
     ln -sf /usr/lib/libASEP11.so /usr/lib/$ARCH-linux-gnu/pkcs11/
     ln -sf /usr/lib/libASEP11.so /usr/lib/$DARCH-athena/
     ln -sf /usr/lib/libASEP11.so /Firma_Digital/LIBRERIAS/
-    ln -sf /usr/local/share/ca-certificates/Costa_Rica/ /Firma_Digital/CERTIFICADOS/
+    ln -sf /usr/local/share/ca-certificates/Costa_Rica/ /Firma_Digital/CERTIFICADOS
 
-    
-
+    [ \! -e /etc/Athena/IDPClientDB.xml -o -L /etc/Athena/IDPClientDB.xml ] && cp /etc/Athena/IDPClientDB.xml.dist /etc/Athena/IDPClientDB.xml   
     bash /usr/share/firmadigitalcr/bin/update-p11-kit-symlinks
 
-    dpkg-divert --add --package firmadigitalcr --rename \
-                        --divert /etc/Athena/IDPClientDB.xml.distrib /etc/Athena/IDPClientDB.xml
-    [ \! -e /etc/Athena/IDPClientDB.xml -o -L /etc/Athena/IDPClientDB.xml ] && ln -sf /etc/Athena/IDPClientDB.xml.distrib /etc/Athena/IDPClientDB.xml
 
 fi
 # End automatically added section
