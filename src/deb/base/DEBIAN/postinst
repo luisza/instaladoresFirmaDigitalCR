@@ -8,6 +8,7 @@ if [ "$1" = configure ]; then
     ln -sf /lib/systemd/system/p11-kit-proxy-updater.service /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service
     mkdir -p /usr/lib/pkcs11/
     ln -sf /usr/lib/libASEP11.so /usr/lib/pkcs11/libASEP11.so
+    ln -sf /usr/lib/libASEP11.so /usr/local/lib/
     ARCH=`uname -m`
     DARCH="x86"
     if [ "$ARCH" = "x86_64" ]; then

@@ -6,7 +6,7 @@ PREFIX="repo"
 ARCHS=(amd64 i386)
 BUILD_PREFIX=`pwd`
 NAME="firmadigitalcr"
-VERSION="1.2"
+VERSION="1.3"
 GPGKEY="391090B9"
 
 

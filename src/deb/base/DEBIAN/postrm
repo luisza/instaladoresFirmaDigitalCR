@@ -5,6 +5,7 @@ rm -rf /usr/local/share/ca-certificates/Costa_Rica/  2>/dev/null || true
 update-ca-certificates --fresh
 rm /etc/systemd/system/multi-user.target.wants/p11-kit-proxy-updater.service  2>/dev/null || true
 rm /usr/lib/pkcs11/libASEP11.so  2>/dev/null || true
+rm /usr/local/lib/libASEP11.so  2>/dev/null || true
 rmdir /usr/lib/pkcs11/ 2>/dev/null || true
 
 ARCH=`uname -m`
