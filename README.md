@@ -1,3 +1,7 @@
+# Importante
+
+Este proyecto hasta el momento solo proporciona instaladores para tarjetas de tipo JCOP3 con Athena, a nivel nacional estamos en una transición a los controladores JCOP4, pero todavía no se han realizado en este proyecto los cambios necesarios para empaquetarlos, en un futuro no muy lejano lo estaremos realizando.
+
 # Instaladores para Firma Digital Costa Rica
 Este repositorio pretende crear instaladores para gran parte de las distribuciones de GNU/Linux, además intentará incluir soluciones a problemas comunes a la hora de firmar o autenticar con instituciones del estado.
 
